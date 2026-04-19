@@ -9,15 +9,13 @@
     />
     <title data-az="İqtisadi İnkişaf və Sosial Tədqiqatlar Mərkəzi" data-ru="Центр Экономического Развития и Социальных Исследований" data-en="Center for Economic Development and Social Research">İqtisadi İnkişaf və Sosial Tədqiqatlar Mərkəzi</title>
     <style>
-      /* Ümumi Stil: Açıq Korporativ Rejim */
       body {
-        background-color: #ffffff; /* Ağ Fon */
-        color: #333333; /* Tünd Boz Mətn */
+        background-color: #ffffff; 
+        color: #333333; 
         font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         line-height: 1.6;
       }
 
-      /* Navbar Stili */
       .navbar {
         background-color: #ffffff !important;
         border-bottom: 1px solid #eaeaea;
@@ -43,11 +41,10 @@
       .navbar-nav .nav-link.active,
       .navbar-nav .nav-link:hover {
         font-weight: 600;
-        color: #7030A0 !important; /* Loqodakı Bənövşəyi Rəng */
+        color: #7030A0 !important; 
         transform: translateY(-2px);
       }
       
-      /* Dil Düymələri */
       .lang-button {
         color: #666666;
         cursor: pointer;
@@ -59,14 +56,13 @@
       }
       .lang-button.active-lang {
         color: #ffffff;
-        background-color: #7030A0; /* Bənövşəyi */
+        background-color: #7030A0; 
       }
       .lang-button:not(.active-lang):hover {
         color: #7030A0;
         background-color: #f4eef9;
       }
       
-      /* Carousel Stili */
       .carousel-item img {
         width: 100%;
         height: 650px;
@@ -83,7 +79,7 @@
         bottom: 0;
         background: linear-gradient(
           to right,
-          rgba(112, 48, 160, 0.75) 0%, /* Bənövşəyi gradient */
+          rgba(112, 48, 160, 0.75) 0%, 
           rgba(0, 0, 0, 0.2) 100%
         );
         z-index: 1;
@@ -125,9 +121,8 @@
         }
       }
 
-      /* Başlıq Stili */
       h1.display-3, h2 {
-        color: #7030A0 !important; /* Bənövşəyi */
+        color: #7030A0 !important; 
         font-weight: 700;
         position: relative;
         padding-bottom: 15px;
@@ -146,12 +141,10 @@
         border-radius: 2px;
       }
 
-      /* Bölmələr üçün Çoxsəhifəli görünüş */
       .container.my-5 {
         padding: 60px 0;
       }
 
-      /* Kartlar və Hover Effekti */
       .card {
         border: 1px solid #eaeaea;
         border-radius: 12px;
@@ -186,9 +179,8 @@
           object-fit: cover;
       }
 
-      /* Digər Elementlər */
       .bg-light {
-        background-color: #f8f9fa !important; /* Açıq boz korporativ fon */
+        background-color: #f8f9fa !important; 
         border: 1px solid #f0f0f0;
       }
       
@@ -209,7 +201,6 @@
         box-shadow: 0 4px 10px rgba(112, 48, 160, 0.3);
       }
       
-      /* Accordion stili (Strateqiyamız bölməsi) */
       .accordion-item {
         background-color: #ffffff !important;
         border: 1px solid #eaeaea !important;
@@ -252,7 +243,6 @@
           padding: 0;
       }
 
-      /* Modallar */
       .modal-content.bg-dark {
         background-color: #ffffff !important;
         color: #333333 !important;
@@ -268,7 +258,6 @@
         filter: invert(1) grayscale(100%) brightness(200%);
       }
 
-      /* Footer Stili */
       footer {
         background: #f8f9fa;
         border-top: 1px solid #eaeaea;
@@ -280,7 +269,6 @@
         font-weight: 500;
       }
 
-      /* Floating Social Buttons */
       .floating-socials {
         position: fixed;
         right: 25px;
@@ -1262,11 +1250,9 @@
     ></script>
 
     <script>
-        // *** DİL DƏYİŞDİRMƏ MƏNTİQİ ***
         
         function setLanguage(langCode, saveToStorage = true) {
             
-            // 1. Dil düymələrini yeniləyin
             const azButton = document.getElementById('lang-az');
             const ruButton = document.getElementById('lang-ru');
             const enButton = document.getElementById('lang-en');
@@ -1285,13 +1271,12 @@
                 enButton.classList.add('active-lang');
             }
 
-            // 2. Mətnləri dəyişdirin
+            
             const elementsToTranslate = document.querySelectorAll('[data-ru]');
             const elementsToTranslateAlt = document.querySelectorAll('[data-ru-alt]');
             const titleElement = document.querySelector('title');
             
             elementsToTranslate.forEach(element => {
-                // Orijinal AZ mətnini yaddaşda saxlayın (yalnız birinci dəfə)
                 if (!element.hasAttribute('data-az')) {
                     element.setAttribute('data-az', element.innerHTML.trim());
                 }
@@ -1309,9 +1294,7 @@
                 }
             });
             
-            // 3. Şəkil Alt mətnlərini dəyişdirin
             elementsToTranslateAlt.forEach(element => {
-                // Orijinal AZ alt mətnini yaddaşda saxlayın (yalnız birinci dəfə)
                 if (!element.hasAttribute('data-az-alt')) {
                     element.setAttribute('data-az-alt', element.getAttribute('alt'));
                 }
@@ -1329,7 +1312,6 @@
                 }
             });
 
-            // 4. Səhifə başlığını (Title) yeniləyin
             if (titleElement) {
                 const azTitle = titleElement.getAttribute('data-az');
                 const ruTitle = titleElement.getAttribute('data-ru');
@@ -1354,7 +1336,7 @@
         
         document.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('currentLang') || 'az';
-            setLanguage(savedLang, false); // Yaddaşa yenidən yazmasın
+            setLanguage(savedLang, false); 
         });
         
     </script>
