@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="az">
   <head>
     <meta charset="UTF-8" />
@@ -7,26 +7,110 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <title data-az="İqtisadi İnkişaf və Sosial Tədqiqatlar Mərkəzi" data-ru="Центр Экономического Развития и Социальных Исследований" data-en="Center for Economic Development and Social Research">İqtisadi İnkişaf və Sosial Tədqiqatlar Mərkəzi</title>
+    <title
+      data-az="İqtisadi İnkişaf və Sosial Tədqiqatlar Mərkəzi"
+      data-ru="Центр Экономического Развития и Социальных Исследований"
+      data-en="Center for Economic Development and Social Research"
+    >
+      İqtisadi İnkişaf və Sosial Tədqiqatlar Mərkəzi
+    </title>
     <style>
       body {
-        background-color: #ffffff; 
-        color: #333333; 
-        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        line-height: 1.6;
+        margin: 0;
+        font-family: system-ui, Arial, sans-serif;
+        color: #0f172a;
+        background: linear-gradient(-45deg, #f0f4ff, #e8e6ff, #e0f2fe, #f5f3ff);
+        background-size: 400% 400%;
+        animation: smoothBgAnimation 15s ease infinite;
+        background-attachment: fixed;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      @keyframes smoothBgAnimation {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+
+      body::before, body::after {
+        content: "";
+        position: fixed;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background: rgba(112, 48, 160, 0.06);
+        filter: blur(40px);
+        z-index: -1;
+        animation: floatCircles 20s linear infinite;
+      }
+      body::before {
+        top: 20%;
+        left: -100px;
+      }
+      body::after {
+        bottom: 10%;
+        right: -100px;
+        animation-delay: -10s;
+        background: rgba(35, 166, 213, 0.06);
+      }
+
+      @keyframes floatCircles {
+        0% { transform: translateY(0) rotate(0deg) scale(1); }
+        50% { transform: translateY(-60px) translateX(50px) rotate(180deg) scale(1.2); }
+        100% { transform: translateY(0) rotate(360deg) scale(1); }
+      }
+
+      .page-wrap {
+        width: 100%;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 15px; 
+        box-sizing: border-box; 
+        position: relative;
+        z-index: 1;
+      }
+
+      .section {
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 14px;
+        padding: 18px 20px;
+        margin: 16px 0;
+        box-shadow: 0 8px 30px rgba(112, 48, 160, 0.03);
+        animation: fadeInUp 0.8s ease-out;
+      }
+
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
       }
 
       .navbar {
-        background-color: #ffffff !important;
-        border-bottom: 1px solid #eaeaea;
+        background-color: rgba(255, 255, 255, 0.9) !important;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-        padding: 15px 0;
+        padding: 8px 0; 
         transition: all 0.3s ease;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        min-height: 76px; 
+        z-index: 1000;
       }
-      
+
       .navbar-brand img {
-          background-color: transparent;
-          border-radius: 5px;
+        background-color: transparent;
+        border-radius: 5px;
+        transition: transform 0.3s ease;
+      }
+      .navbar-brand:hover img {
+        transform: scale(1.08) rotate(3deg);
       }
 
       .navbar-nav .nav-link {
@@ -35,16 +119,31 @@
         text-transform: uppercase;
         font-size: 0.9rem;
         margin: 0 8px;
-        transition: color 0.3s, transform 0.3s;
+        position: relative;
+        transition: color 0.3s;
+      }
+
+      .navbar-nav .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background-color: #7030a0;
+        transition: width 0.3s ease;
+      }
+      .navbar-nav .nav-link:hover::after,
+      .navbar-nav .nav-link.active::after {
+        width: 100%;
       }
 
       .navbar-nav .nav-link.active,
       .navbar-nav .nav-link:hover {
         font-weight: 600;
-        color: #7030A0 !important; 
-        transform: translateY(-2px);
+        color: #7030a0 !important;
       }
-      
+
       .lang-button {
         color: #666666;
         cursor: pointer;
@@ -56,13 +155,13 @@
       }
       .lang-button.active-lang {
         color: #ffffff;
-        background-color: #7030A0; 
+        background-color: #7030a0;
       }
       .lang-button:not(.active-lang):hover {
-        color: #7030A0;
+        color: #7030a0;
         background-color: #f4eef9;
       }
-      
+
       .carousel-item img {
         width: 100%;
         height: 650px;
@@ -79,195 +178,213 @@
         bottom: 0;
         background: linear-gradient(
           to right,
-          rgba(112, 48, 160, 0.75) 0%, 
+          rgba(112, 48, 160, 0.7) 0%,
           rgba(0, 0, 0, 0.2) 100%
         );
         z-index: 1;
       }
-      
+
       .carousel-caption {
         bottom: 20%;
         z-index: 2;
         background-color: rgba(255, 255, 255, 0.95) !important;
         padding: 2.5rem;
         border-radius: 8px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         text-align: left;
         max-width: 600px;
         left: 10%;
+        animation: fadeInLeft 1s ease-out;
+      }
+
+      @keyframes fadeInLeft {
+        from { opacity: 0; transform: translateX(-30px); }
+        to { opacity: 1; transform: translateX(0); }
       }
 
       .carousel-caption h3 {
-        color: #7030A0 !important;
+        color: #7030a0 !important;
         font-weight: 700;
         font-size: 2rem;
         margin-bottom: 15px;
       }
-      
+
       .carousel-caption p {
         color: #444444 !important;
         font-size: 1.1rem;
         margin-bottom: 0;
       }
-      
+
       @media (max-width: 992px) {
         .carousel-item img { height: 450px; }
         .carousel-caption { left: 5%; right: 5%; bottom: 10%; padding: 1.5rem; }
       }
-      
-      @media (max-width: 767.98px) {
-        .carousel-caption {
-          display: none !important;
+
+      @media (max-width: 991.98px) {
+        .navbar-collapse {
+          background: #ffffff;
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+          margin-top: 10px;
+          border: 1px solid #eaeaea;
         }
+        .navbar-nav { text-align: center; }
+        .navbar-nav .nav-link { padding: 12px 0; margin: 4px 0; border-bottom: 1px solid #f8f9fa; }
+        .navbar-nav .nav-item:last-child .nav-link { border-bottom: none; }
+        #language-switcher { margin-bottom: 15px; justify-content: center; }
+      }
+
+      @media (max-width: 767.98px) {
+        .page-wrap { padding: 0 10px; }
+        .carousel-caption { display: none !important; }
       }
 
       h1.display-3, h2 {
-        color: #7030A0 !important; 
+        color: #7030a0 !important;
         font-weight: 700;
         position: relative;
         padding-bottom: 15px;
         margin-bottom: 40px;
       }
-      
+
       h1.display-3::after {
-        content: '';
+        content: "";
         position: absolute;
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
         width: 80px;
         height: 4px;
-        background-color: #7030A0;
+        background-color: #7030a0;
         border-radius: 2px;
+        transition: width 0.4s ease;
+      }
+      
+      h1.display-3:hover::after {
+        width: 140px;
       }
 
-      .container.my-5 {
-        padding: 60px 0;
-      }
+      .container.my-5 { padding: 60px 0; }
 
       .card {
-        border: 1px solid #eaeaea;
+        border: 1px solid rgba(254, 254, 254, 0.6);
         border-radius: 12px;
-        background-color: #ffffff;
+        background-color: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(5px);
         color: #444444;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02);
+        transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
         overflow: hidden;
       }
-      
+
       .card:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 15px 30px rgba(112, 48, 160, 0.15); /* Bənövşəyi kölgə */
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 20px 35px rgba(112, 48, 160, 0.15);
       }
 
-      .card-body {
-        padding: 1.5rem;
-      }
+      .card-body { padding: 1.5rem; }
+      .card img { transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); }
+      .card:hover img { transform: scale(1.06); }
 
-      .card img {
-          transition: transform 0.5s ease-in-out;
-      }
+      .gallery-img { width: 100%; height: 220px; object-fit: cover; }
 
-      .card:hover img {
-          transform: scale(1.05);
-      }
-      
-      /* Qalereya şəkilləri */
-      .gallery-img {
-          width: 100%;
-          height: 220px;
-          object-fit: cover;
+      .feature-card-img {
+        width: 100%;
+        height: 420px;
+        object-fit: contain;
+        background-color: transparent;
+        border-bottom: 1px solid #f1f5f9;
       }
 
       .bg-light {
-        background-color: #f8f9fa !important; 
-        border: 1px solid #f0f0f0;
+        background-color: rgba(255, 255, 255, 0.6) !important;
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
       }
-      
+
       .btn-warning {
-        background-color: #7030A0;
-        border-color: #7030A0;
+        background-color: #7030a0;
+        border-color: #7030a0;
         color: white;
         font-weight: 600;
         padding: 8px 25px;
         border-radius: 25px;
         transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+      }
+      .btn-warning::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 0; height: 100%;
+        background-color: #552277;
+        transition: width 0.3s ease;
+        z-index: -1;
+      }
+      .btn-warning:hover::before {
+        width: 100%;
+      }
+      .btn-warning:hover {
+        color: white;
+        box-shadow: 0 6px 15px rgba(112, 48, 160, 0.4);
+        transform: translateY(-2px);
       }
 
-      .btn-warning:hover {
-        background-color: #552277;
-        border-color: #552277;
-        color: white;
-        box-shadow: 0 4px 10px rgba(112, 48, 160, 0.3);
-      }
-      
       .accordion-item {
-        background-color: #ffffff !important;
-        border: 1px solid #eaeaea !important;
+        background-color: rgba(255, 255, 255, 0.85) !important;
+        border: 1px solid rgba(234, 234, 234, 0.6) !important;
         border-radius: 8px !important;
         margin-bottom: 10px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        transition: transform 0.2s ease;
+      }
+      .accordion-item:hover {
+        transform: translateX(4px);
       }
 
       .accordion-header .accordion-button {
-        background-color: #f8f9fa !important;
-        color: #333333 !important; 
+        background-color: rgba(248, 249, 250, 0.8) !important;
+        color: #333333 !important;
         font-weight: 600;
         padding: 1.2rem;
         box-shadow: none !important;
+        transition: background-color 0.3s;
       }
-
       .accordion-header .accordion-button:focus {
-        border-color: #7030A0;
-        box-shadow: 0 0 0 0.25rem rgba(112, 48, 160, 0.2);
+        border-color: #7030a0;
       }
-
       .accordion-header .accordion-button:not(.collapsed) {
         border-bottom: 1px solid #eaeaea;
-        color: #7030A0 !important;
-        background-color: #f4eef9 !important; 
+        color: #7030a0 !important;
+        background-color: #f4eef9 !important;
       }
 
-      .accordion-body {
-        background-color: #ffffff !important;
-        color: #555555 !important;
-        line-height: 1.8;
+      .accordion-body { background-color: transparent !important; color: #555555 !important; line-height: 1.8; }
+      .accordion-body strong { color: #7030a0 !important; }
+      #accordionExample { border: none; padding: 0; }
+
+      .modal-content {
+        animation: modalSlide 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      }
+      @keyframes modalSlide {
+        from { transform: scale(0.9); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
       }
 
-      .accordion-body strong {
-          color: #7030A0 !important;
-      }
-
-      #accordionExample {
-          border: none; 
-          padding: 0;
-      }
-
-      .modal-content.bg-dark {
-        background-color: #ffffff !important;
-        color: #333333 !important;
-      }
-      .modal-header.border-success, .modal-footer.border-success {
-        border-color: #eaeaea !important;
-      }
-      .modal-title.text-success {
-        color: #7030A0 !important;
-        font-weight: bold;
-      }
-      .btn-close-white {
-        filter: invert(1) grayscale(100%) brightness(200%);
-      }
+      .modal-content.bg-dark { background-color: #ffffff !important; color: #333333 !important; }
+      .modal-header.border-success, .modal-footer.border-success { border-color: #eaeaea !important; }
+      .modal-title.text-success { color: #7030a0 !important; font-weight: bold; }
+      .btn-close-white { filter: invert(1) grayscale(100%) brightness(200%); }
 
       footer {
-        background: #f8f9fa;
-        border-top: 1px solid #eaeaea;
-        color: #555555; 
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(5px);
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+        color: #555555;
       }
-      
-      footer p {
-        color: #777777;
-        font-weight: 500;
-      }
+      footer p { color: #777777; font-weight: 500; }
 
       .floating-socials {
         position: fixed;
@@ -287,29 +404,38 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
+        animation: pulseButton 2.5s infinite;
+      }
+      
+      .floating-socials a:nth-child(2) .floating-btn { animation-delay: 0.3s; }
+      .floating-socials a:nth-child(3) .floating-btn { animation-delay: 0.6s; }
+
+      @keyframes pulseButton {
+        0% { box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); }
+        50% { box-shadow: 0 4px 25px rgba(112, 48, 160, 0.4); transform: scale(1.05); }
+        100% { box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); }
       }
 
-      .floating-btn img {
-        width: 30px;
-        height: 30px;
-        object-fit: contain;
-      }
-
+      .floating-btn img { width: 30px; height: 30px; object-fit: contain; }
       .floating-btn:hover {
-        transform: translateY(-5px) scale(1.05);
-        box-shadow: 0 8px 25px rgba(112, 48, 160, 0.3);
+        transform: translateY(-5px) scale(1.1) !important;
+        box-shadow: 0 8px 25px rgba(112, 48, 160, 0.4) !important;
       }
 
+      :root { --header-h: 76px; }
+      :target { scroll-margin-top: var(--header-h); }
+      section[id], h1[id], h2[id], div[id], header[id], main[id], article[id] { scroll-margin-top: var(--header-h); }
+      html { scroll-behavior: smooth; }
     </style>
   </head>
   <body id="top">
     <nav class="navbar navbar-expand-lg fixed-top">
-      <div class="container-fluid">
+      <div class="container-fluid px-3">
         <a class="navbar-brand d-flex align-items-center" href="#top">
           <img
-            src="./img/logopng.png" 
+            src="./img/logopng.png"
             alt="Logo"
             width="60"
             height="60"
@@ -318,10 +444,7 @@
         </a>
         <div class="d-flex align-items-center order-lg-3">
           <div class="d-flex me-3 fw-bold" id="language-switcher">
-            <span
-              id="lang-az"
-              class="lang-button"
-              onclick="setLanguage('az')"
+            <span id="lang-az" class="lang-button" onclick="setLanguage('az')"
               >AZ</span
             >
             <span class="text-secondary mx-1">|</span>
@@ -345,23 +468,47 @@
         <div class="collapse navbar-collapse order-lg-2" id="navbarNav">
           <ul class="navbar-nav ms-auto me-4">
             <li class="nav-item">
-              <a class="nav-link active" href="#top" data-ru="Главная" data-en="Home"
+              <a
+                class="nav-link active"
+                href="#top"
+                data-ru="Главная"
+                data-en="Home"
                 >Ana Səhifə</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#about" data-ru="О нас" data-en="About Us">Haqqımızda</a>
+              <a
+                class="nav-link"
+                href="#about"
+                data-ru="О нас"
+                data-en="About Us"
+                >Haqqımızda</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#gallery" data-ru="Галерея" data-en="Gallery">Qalereya</a>
+              <a
+                class="nav-link"
+                href="#gallery"
+                data-ru="Галерея"
+                data-en="Gallery"
+                >Qalereya</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#features" data-ru="Деятельность" data-en="Activities"
+              <a
+                class="nav-link"
+                href="#features"
+                data-ru="Деятельность"
+                data-en="Activities"
                 >Fəaliyyətlər</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#partners" data-ru="Партнеры" data-en="Partners"
+              <a
+                class="nav-link"
+                href="#partners"
+                data-ru="Партнеры"
+                data-en="Partners"
                 >Tərəfdaşlar</a
               >
             </li>
@@ -377,11 +524,13 @@
       data-bs-interval="5000"
     >
       <div class="carousel-inner">
-        <div class="carousel-item active position-relative">
-          <img src="./img/img1.png" class="d-block w-100" alt="İqtisadi Tədqiqatlar" />
-          <div
-            class="carousel-caption d-md-block"
-          >
+        <div class="carousel-item active">
+          <img
+            src="./img/img1.png"
+            class="d-block w-100"
+            alt="İqtisadi Tədqiqatlar"
+          />
+          <div class="carousel-caption d-md-block">
             <h3
               data-ru="Добро пожаловать в Центр Экономического Развития и Социальных Исследований!"
               data-en="Welcome to the Center for Economic Development and Social Research!"
@@ -398,16 +547,18 @@
           </div>
         </div>
 
-        <div class="carousel-item position-relative">
-          <img src="./img/img2.png" class="d-block w-100" alt="Sosial İnkişaf" />
-          <div
-            class="carousel-caption d-md-block"
-          >
+        <div class="carousel-item">
+          <img
+            src="./img/img2.png"
+            class="d-block w-100"
+            alt="Sosial İnkişaf"
+          />
+          <div class="carousel-caption d-md-block">
             <h3
               data-ru="Ознакомьтесь с нашим Центром Современных Исследований"
               data-en="Discover our Modern Research Center"
             >
-              Müasir Tədqiqatlar Mərkəzimizlə Tanış Olun
+              Müasir Tədqiqatlar Mərkəbimizlə Tanış Olun
             </h3>
             <p
               data-ru="Мы предлагаем креативные решения на пересечении науки и экономики."
@@ -426,7 +577,9 @@
         data-bs-slide="prev"
       >
         <span class="carousel-control-prev-icon"></span>
-        <span class="visually-hidden" data-ru="Предыдущий" data-en="Previous">Əvvəlki</span>
+        <span class="visually-hidden" data-ru="Предыдущий" data-en="Previous"
+          >Əvvəlki</span
+        >
       </button>
       <button
         class="carousel-control-next"
@@ -435,572 +588,362 @@
         data-bs-slide="next"
       >
         <span class="carousel-control-next-icon"></span>
-        <span class="visually-hidden" data-ru="Следующий" data-en="Next">Növbəti</span>
+        <span class="visually-hidden" data-ru="Следующий" data-en="Next"
+          >Növbəti</span
+        >
       </button>
     </div>
 
-    <div class="container my-5" id="about">
-      <h1 class="display-3 text-center mb-5" data-ru="О нас" data-en="About Us">Haqqımızda</h1>
-      <div class="p-5 rounded bg-light">
-        <p
-          class="lead fw-bold text-center mb-4"
-          data-ru="Презентация Общественного Объединения 'Центр Экономического Развития и Социальных Исследований', Имишлинский район - 2025"
-          data-en="Presentation of the Public Union 'Center for Economic Development and Social Research', Imishli Region - 2025"
-          style="color: #7030A0;"
-        >
-          İqtisadi İnkişaf və Sosial Tədqiqatlar Mərkəzi İctimai Birliyi
-          Təqdimat, İmişli Rayonu - 2025
-        </p>
-        <h3 class="mb-3" data-ru="Об Общественном Объединении" data-en="About the Public Union">
-          İctimai Birlik Haqqında
-        </h3>
-        <p
-          class="card-text mb-4"
-          data-ru="Общественное Объединение 'Центр Экономического Развития и Социальных Исследований' было зарегистрировано Министерством Юстиции Азербайджанской Республики 19 марта 2009 года с 15 членами. В настоящее время НПО имеет офис в Баку и осуществляет деятельность в Имишли и других регионах страны. В период с 2009 по 2025 год активно участвовало в нескольких грантовых проектах, выделенных государством. В состав Общественного Объединения в настоящее время входят 5 членов правления."
-          data-en="The Public Union 'Center for Economic Development and Social Research' was registered by the Ministry of Justice of the Republic of Azerbaijan on March 19, 2009, with 15 members. Currently, the NGO has an office in Baku and operates in Imishli and other regions of the country. Between 2009 and 2025, it actively participated in several state-funded grant projects. Currently, the Public Union consists of 5 board members."
-        >
-          **İqtisadi İnkişaf və Sosial Tədqiqatlar Mərkəzi İctimai Birliyi** 19
-          Mart 2009-cu il tarixində 15 nəfər üzvlərlə olmaqla Azərbaycan
-          Respublikası Ədliyyə Nazirliyi tərəfindən dövlət qeydiyyatına
-          alınmışdır. Hal hazırda QHT Bakı şəhərində ofisi olmaqla, İmişli və
-          ölkənin digər bölgələrində fəaliyyət göstərir. 2009-2025-ci illər
-          arasında dövlətin ayırdığı bir neçə qrant layihələrində fəal iştirak
-          etmişdir. İctimai Birliyin tərkibində hal hazırda 5 nəfər idarə heyəti
-          üzvü çalışır.
-        </p>
-        <h3 class="mb-3 mt-5" data-ru="НАША МИССИЯ и ЦЕЛИ" data-en="OUR MISSION and GOALS">
-          MİSSİYAMIZ və MƏRAMIMIZ
-        </h3>
-        <p class="card-text">
-          <strong data-ru="Наша Миссия:" data-en="Our Mission:" style="color:#7030A0;">Missiyamız:</strong>
-          <span
-            data-ru="Проведение просветительской работы по социально-экономическому развитию страны, поддержка развития инфраструктуры в регионе и содействие формированию предпринимательской среды в регионах."
-            data-en="Conducting educational work related to the socio-economic development of the country, supporting infrastructure development in the region, and assisting in the formation of an entrepreneurial environment in the regions."
-            >Ölkənin sosial-iqtisadi inkişafı ilə bağlı maarifçilik işi aparmaq,
-            regionda infrastrukturun inkişafına dəstək və bölgələrdə sahibkarlıq
-            mühitinin formalaşmasına yardım etməkdir.</span
-          >
-          <br /><br />
-          <strong data-ru="Наша Цель:" data-en="Our Goal:" style="color:#7030A0;">Məramımız:</strong>
-          <span
-            data-ru="Играть роль моста между обществом, государством и частным сектором, поддерживая решение социальных проблем."
-            data-en="To play the role of a bridge between society, the state, and the private sector by supporting the solution of social problems."
-            >Sosial problemlərin həllinə dəstək olmaqla cəmiyyətlə dövlət və
-            özəl sektor arasında körpü rolunu oynamaqdır.</span
-          >
-        </p>
-      </div>
-    </div>
-
-    <div class="container my-5" id="gallery">
-      <h1 class="display-3 text-center mb-5" data-ru="Галерея Деятельности" data-en="Activity Gallery">
-        Fəaliyyət Qalereyası
-      </h1>
-      <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
-          <div class="card h-100">
-            <img
-              src="./img/gallery1.png"
-              class="gallery-img"
-              data-ru-alt="Детская Футбольная Команда"
-              data-en-alt="Children's Football Team"
-              alt="Uşaq Futbol Komandası"
-            />
-            <div class="card-body text-center p-3">
-              <p
-                class="card-text small mb-0 fw-medium"
-                data-ru="Оказана поддержка созданию детско-юношеской футбольной команды в составе 150 человек в Имишлинском районе."
-                data-en="Supported the creation of a youth football team consisting of 150 people in the Imishli region."
-              >
-                İmişli rayonunda 150 nəfərdən ibarət uşaq gənclər futbolunun
-                yaradılmasına dəstək olmuşdur
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100">
-            <img
-              src="./img/gallery5.png"
-              class="gallery-img"
-              data-ru-alt="Обучение МСБ (KOB)"
-              data-en-alt="SME (KOB) Training"
-              alt="KOB Təlimi"
-            />
-            <div class="card-body text-center p-3">
-              <p
-                class="card-text small mb-0 fw-medium"
-                data-ru="Совместно с МСБ (KOB) были реализованы обучающие и просветительские программы по направлению написания проектов с предпринимателями."
-                data-en="Training and awareness programs on project writing with entrepreneurs were implemented jointly with SME (KOB)."
-              >
-                KOB-la birlikdə Sahibkarla layihələrin yazılması istiqamətində
-                təlim və maarifləndirmə proqramları həyata keçirilmişdir.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100">
-            <img
-              src="./img/gallery2.png"
-              class="gallery-img"
-              data-ru-alt="Встреча с Семьями Шехидов"
-              data-en-alt="Meeting with Martyrs' Families"
-              alt="Şəhid Ailələriylə Görüş"
-            />
-            <div class="card-body text-center p-3">
-              <p
-                class="card-text small mb-0 fw-medium"
-                data-ru="Оказана поддержка в организации межшкольных соревнований по стрельбе, посвящённых памяти шехидов, в Имишлинском районе."
-                data-en="Supported the organization of an inter-school shooting competition dedicated to the memory of martyrs in the Imishli region."
-              >
-                İmişli rayonunda şəhidlərin xatirəsinə həsr olunmuş məktəblər
-                arası atıcılıq yarışının təşkilinə dəstək olmuşdur
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100">
-            <img
-              src="./img/gallery4.png"
-              class="gallery-img"
-              data-ru-alt="Заседание Правления"
-              data-en-alt="Board Meeting"
-              alt="İdarə Heyəti Görüşü"
-            />
-            <div class="card-body text-center p-3">
-              <p
-                class="card-text small mb-0 fw-medium"
-                data-ru="Общественная организация (НПО) провела мероприятие, посвящённое памяти шехидов, в связи с Днём памяти 27 сентября 2024 года."
-                data-en="On September 27, 2024, the NGO held an event dedicated to the memory of martyrs in connection with the Memorial Day."
-              >
-                27 Sentyabr 2024 tarixində anım günü ilə bağlı QHT Şəhidlərin
-                xatirəsinə həsr olunmuş tədbir keçirmişdir.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100">
-            <img src="./img/gallery6.png" class="gallery-img" data-ru-alt="Тренинг" data-en-alt="Training" alt="Təlim" />
-            <div class="card-body text-center p-3">
-              <p
-                class="card-text small mb-0 fw-medium"
-                data-ru="Вместе с Имишлинским ASAN Xidmət был проведён тренинг по кибербезопасности для волонтёров ASAN."
-                data-en="A cybersecurity training for ASAN volunteers was conducted jointly with Imishli ASAN Service."
-              >
-                İmişli ASAN Xidmətlə birgə kibertəhlükəsizlik mövzusunda ASAN
-                könüllülərinə təlim keçirmişdir.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100">
-            <img src="./img/gallery3.png" class="gallery-img" data-ru-alt="Нет Наркомании" data-en-alt="No to Drug Addiction" alt="Narkomaniyaya yox" />
-            <div class="card-body text-center p-3">
-              <p
-                class="card-text small mb-0 fw-medium"
-                data-ru="Совместно с Исполнительной властью Имишлинского района проведено мероприятие 'Нет наркомании' в Имишлинском районе."
-                data-en="An event titled 'No to Drug Addiction' was held in the Imishli region jointly with the Imishli Executive Power."
-              >
-                İmişli rayonunda İmişli İcra Hakimiyəti
-                ilə birg "narkomaniyaya yox" adlı
-                tədbir keçirilmişdir.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container my-5" id="features">
-      <h1
-        class="display-3 text-center mb-5"
-        data-ru="Проделанные Работы и Мероприятия"
-        data-en="Completed Work and Events"
-      >
-        Görülən İşlər və Tədbirlər
-      </h1>
-
-      <div class="row row-cols-1 row-cols-md-2 g-4 mx-auto mb-5">
-        <div class="col">
-          <div class="card h-100">
-            <img
-              src="./img/img3.png"
-              class="card-img-top gallery-img"
-              data-ru-alt="Проект Детско-Юношеского Футбола"
-              data-en-alt="Youth Football Project"
-              alt="Futbol layihəsi"
-            />
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title" data-ru="Проект Детско-Юношеского Футбола" data-en="Youth Football Project">
-                Uşaq Gənclər Futbolu Layihəsi
-              </h5>
-              <p
-                class="card-text flex-grow-1"
-                data-ru="Оказана поддержка в создании детско-юношеского футбола, состоящего из **150 человек**, в Имишлинском районе."
-                data-en="Supported the creation of a youth football team consisting of **150 members** in the Imishli region."
-              >
-                İmişli rayonunda **150 nəfərdən ibarət uşaq gənclər futbolunun
-                yaradılmasına** dəstək olmuşdur.
-              </p>
-              <button
-                type="button"
-                class="btn btn-warning mt-3 align-self-start"
-                data-bs-toggle="modal"
-                data-bs-target="#modal1"
-                data-ru="Подробнее"
-                data-en="Details"
-              >
-                Ətraflı
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card h-100">
-            <img
-              src="./img/img4.png"
-              class="card-img-top gallery-img"
-              data-ru-alt="Oрганизация Соревнований по Стрельбе"
-              data-en-alt="Organization of Shooting Competition"
-              alt="Atıcılıq yarışması"
-            />
-            <div class="card-body d-flex flex-column">
-              <h5
-                class="card-title"
-                data-ru="Организация Соревнований по Стрельбе"
-                data-en="Organization of Shooting Competition"
-              >
-                Atıcılıq Yarışının Təşkili
-              </h5>
-              <p
-                class="card-text flex-grow-1"
-                data-ru="Оказана поддержка в организации **межшкольных соревнований по стрельбе, посвященных памяти шехидов**, в Имишлинском районе."
-                data-en="Supported the organization of an **inter-school shooting competition dedicated to the memory of martyrs** in the Imishli region."
-              >
-                İmişli rayonunda **şəhidlərin xatirəsinə həsr olunmuş
-                məktəblərarası atıcılıq yarışının** təşkilinə dəstək olmuşdur.
-              </p>
-              <button
-                type="button"
-                class="btn btn-warning mt-3 align-self-start"
-                data-bs-toggle="modal"
-                data-bs-target="#modal2"
-                data-ru="Подробнее"
-                data-en="Details"
-              >
-                Ətraflı
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card h-100">
-            <img
-              src="./img/img5.png"
-              class="card-img-top gallery-img"
-              data-ru-alt="Мероприятие 'Нет Наркомании'"
-              data-en-alt="'No to Drug Addiction' Event"
-              alt="Narkomaniyaya yox"
-            />
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title" data-ru="Мероприятие 'Нет Наркомании'" data-en="'No to Drug Addiction' Event">
-                "Narkomaniyaya Yox” Tədbiri
-              </h5>
-              <p
-                class="card-text flex-grow-1"
-                data-ru="Совместно с Исполнительной Властью Имишлинского района проведено **мероприятие под названием 'Нет Наркомании'**."
-                data-en="An **event titled 'No to Drug Addiction'** was held jointly with the Executive Power of Imishli Region."
-              >
-                İmişli rayon İcra Hakimiyyəti ilə birgə **"Narkomaniyaya yox” adlı
-                tədbir** keçirilmişdir.
-              </p>
-              <button
-                type="button"
-                class="btn btn-warning mt-3 align-self-start"
-                data-bs-toggle="modal"
-                data-bs-target="#modal3"
-                data-ru="Подробнее"
-                data-en="Details"
-              >
-                Ətraflı
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card h-100">
-            <img src="./img/img9.png" class="card-img-top gallery-img" data-ru-alt="Тренинги по Предпринимательским Проектам" data-en-alt="Trainings on Entrepreneurship Projects" alt="KOB layihələri" />
-            <div class="card-body d-flex flex-column">
-              <h5
-                class="card-title"
-                data-ru="Тренинги по Предпринимательским Проектам"
-                data-en="Trainings on Entrepreneurship Projects"
-              >
-                Sahibkarlıq Layihələri üzrə Təlimlər
-              </h5>
-              <p
-                class="card-text flex-grow-1"
-                data-ru="Совместно с KOB (Агентство по Развитию Малого и Среднего Бизнеса) проведены тренинги и просветительские программы по **написанию проектов для предпринимателей**."
-                data-en="Trainings and awareness programs on **project writing for entrepreneurs** were conducted jointly with SME (KOB)."
-              >
-                KOB-la birlikdə **Sahibkarlara layihələrin yazılması**
-                istiqamətində təlim və maarifləndirmə proqramları həyata
-                keçirilmişdir.
-              </p>
-              <button
-                type="button"
-                class="btn btn-warning mt-3 align-self-start"
-                data-bs-toggle="modal"
-                data-bs-target="#modal4"
-                data-ru="Подробнее"
-                data-en="Details"
-              >
-                Ətraflı
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="bg-light py-5">
-      <div class="container my-4" id="prices">
-        <h1 class="display-3 text-center mb-5" data-ru="Наша Стратегия" data-en="Our Strategy">
-          Strateqiyamız
+    <div class="page-wrap">
+      <div class="container my-5" id="about">
+        <h1 class="display-3 text-center mb-5" data-ru="О нас" data-en="About Us">
+          Haqqımızda
         </h1>
-
-        <div class="accordion" id="accordionExample">
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button
-                class="accordion-button"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseOne"
-                aria-expanded="true"
-                aria-controls="collapseOne"
-                data-ru="Грантовые Проекты и Сотрудничество"
-                data-en="Grant Projects and Cooperation"
-              >
-                Qrant Layihələri və Əməkdaşlıq
-              </button>
-            </h2>
-            <div
-              id="collapseOne"
-              class="accordion-collapse collapse show"
-              data-bs-parent="#accordionExample"
-            >
-              <div
-                class="accordion-body"
-                data-ru="Совместное сотрудничество в рамках грантовых проектов с **Агентством Поддержки Неправительственных Организаций Азербайджанской Республики**"
-                data-en="Joint cooperation within grant projects with the **Agency for State Support to Non-Governmental Organizations of the Republic of Azerbaijan**"
-              >
-                <strong
-                  >Azərbaycan Respublikası Qeyri Hökümət Təşkilatlarına Dəstək
-                  Agentliyi</strong
-                >
-                ilə qrant layihələri çərçivəsində birgə əməkdaşlıq.
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseTwo"
-                aria-expanded="false"
-                aria-controls="collapseTwo"
-                data-ru="Социально-Ориентированная Деятельность в Регионах"
-                data-en="Socially-Oriented Activities in Regions"
-              >
-                Bölgələrdə Sosial Yönümlü Fəaliyyətlər
-              </button>
-            </h2>
-            <div
-              id="collapseTwo"
-              class="accordion-collapse collapse"
-              data-bs-parent="#accordionExample"
-            >
-              <div
-                class="accordion-body"
-                data-ru="Участие в **социально-ориентированных проектах** по **озеленению** и повышению уровня знаний в регионах и Карабахе. Совершенствование системы управления НПО, поддержка уровня занятости и возможностей трудоустройства в регионах."
-                data-en="Participation in **socially-oriented projects**, **greening** initiatives, and improving knowledge levels in the regions and Karabakh. Enhancing the NGO management system and supporting employment opportunities in the regions."
-              >
-                Bölgələrdə və Qarabağda **yaşıllaşdırma**, saviyyəsinin artırılması,
-                **sosial yönümlü layihələrdə** iştirak etmək. QHT-nin idarəetme
-                sistemini təkmilləşdirmək, işçilik səviyyəsi və məşğulluq
-                imkanlarının bölgələrdə tətbiqinə dəstək.
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseThree"
-                aria-expanded="false"
-                aria-controls="collapseThree"
-                data-ru="Поддержка Предпринимательства и Занятости"
-                data-en="Support for Entrepreneurship and Employment"
-              >
-                Sahibkarlıq və Məşğulluğa Dəstək
-              </button>
-            </h2>
-            <div
-              id="collapseThree"
-              class="accordion-collapse collapse"
-              data-bs-parent="#accordionExample"
-            >
-              <div
-                class="accordion-body"
-                data-ru="**Поддержка потенциала развития сельского хозяйства и малого предпринимательства.** Поддержка возможностей выхода молодежи и женщин на рынок труда."
-                data-en="**Support for the development potential of agriculture and small businesses.** Supporting opportunities for youth and women to enter the labor market."
-              >
-                **Kənd təsərrüfatı və kiçik sahibkarlığın inkişaf potensialına
-                dəstək.** Gənclərin və qadınların əmək bazarına çıxış imkanlarına
-                dəstək.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container my-5" id="partners">
-      <h1
-        class="display-3 text-center mb-5"
-        data-ru="Наши Партнеры"
-        data-en="Our Partners"
-      >
-        Tərəfdaşlarımız
-      </h1>
-
-      <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
-          <div class="card text-center h-100 p-4 align-items-center">
-            <img
-              src="./img/img6.png"
-              class="img-fluid mb-3"
-              style="max-width: 150px;"
-              data-ru-alt="Исполнительная Власть Имишлинского района"
-              data-en-alt="Imishli Region Executive Power"
-              alt="İmişli İcra Hakimiyyəti"
-            />
-            <div class="card-body p-0">
-              <h5
-                class="card-title"
-                data-ru="Исполнительная Власть Имишлинского района"
-                data-en="Imishli Region Executive Power"
-              >
-                İmişli Rayon İcra Hakimiyyəti
-              </h5>
-              <p
-                class="card-text text-muted"
-                data-ru="Совместные социальные и просветительские проекты на региональном уровне."
-                data-en="Joint social and educational projects at the regional level."
-              >
-                Region səviyyəsində birgə sosial və maarifləndirici layihələr.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card text-center h-100 p-4 align-items-center">
-            <img
-              src="./img/img7.png"
-              class="img-fluid mb-3"
-              style="max-width: 150px;"
-              data-ru-alt="Агентство Поддержки НПО"
-              data-en-alt="NGO Support Agency"
-              alt="QHT Agentliyi"
-            />
-            <div class="card-body p-0">
-              <h5 class="card-title" data-ru="Агентство Поддержки НПО" data-en="NGO Support Agency">
-                QHT-lərə Dəstək Agentliyi
-              </h5>
-              <p
-                class="card-text text-muted"
-                data-ru="Грантовое сотрудничество с Агентством Государственной Поддержки Неправительственных Организаций."
-                data-en="Grant cooperation with the Agency for State Support to Non-Governmental Organizations."
-              >
-                Qeyri-Hökumət Təşkilatlarına Dövlət Dəstəyi Agentliyi ilə qrant
-                əməkdaşlığı.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card text-center h-100 p-4 align-items-center">
-            <img
-              src="./img/img8.png"
-              class="img-fluid mb-3"
-              style="max-width: 150px;"
-              data-ru-alt="Национальный Форум НПО Азербайджана"
-              data-en-alt="National NGO Forum of Azerbaijan"
-              alt="Milli QHT Forumu"
-            />
-            <div class="card-body p-0">
-              <h5 class="card-title" data-ru="Национальный Форум НПО Азербайджана" data-en="National NGO Forum of Azerbaijan">
-                Azərbaycan Milli QHT Forumu
-              </h5>
-              <p
-                class="card-text text-muted"
-                data-ru="Партнерство с Форумом в области обмена опытом и институционального развития."
-                data-en="Partnership with the Forum in experience exchange and institutional development."
-              >
-                Forum ilə təcrübə mübadiləsi və institusional inkişaf sahəsində
-                tərəfdaşlıq.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="bg-light py-5">
-      <div class="container my-4" id="contact">
-        <h2 class="text-center mb-5" data-ru="Наш Адрес и Контакты" data-en="Our Address and Contacts">
-          Ünvanımız və Əlaqə
-        </h2>
-        <div class="p-4 rounded bg-white shadow-sm mb-5 border border-light">
-          <h5
-            class="card-title text-center mb-4"
-            data-ru="Общественное Объединение 'Центр Экономического Развития и Социальных Исследований'"
-            data-en="Center for Economic Development and Social Research Public Union"
+        <div class="p-5 rounded bg-light section">
+          <p
+            class="lead fw-bold text-center mb-4"
+            data-ru="Презентация Общественного Объединения 'Центр Экономического Развития и Социальных Исследований', Имишлинский район - 2025"
+            data-en="Presentation of the Public Union 'Center for Economic Development and Social Research', Imishli Region - 2025"
+            style="color: #7030a0"
           >
             İqtisadi İnkişaf və Sosial Tədqiqatlar Mərkəzi İctimai Birliyi
-          </h5>
-          <p class="text-center mb-2 fs-5">
-            <span data-ru="Адрес:" data-en="Address:">Ünvan:</span> <strong style="color:#7030A0;"><span
-              data-ru="Имишлинский район"
-              data-en="Imishli region"
-              >İmişli rayonu</span
-            ></strong>
+            Təqdimat, İmişli Rayonu - 2025
           </p>
-          <p class="text-center mb-0 fs-5">
-            <span data-ru="Телефон:" data-en="Phone:">Telefon:</span> <strong style="color:#7030A0;">050 208 58 38</strong>
+          <h3
+            class="mb-3"
+            data-ru="Об Общественном Объединении"
+            data-en="About the Public Union"
+          >
+            İctimai Birlik Haqqında
+          </h3>
+          <p
+            class="card-text mb-4"
+            data-ru="Общественное Объединение 'Центр Экономического Развития и Социальных Исследований' было зарегистрировано Министерством Юстиции Азербайджанской Республики 19 марта 2009 года с 15 членами. В настоящее время НПО имеет офис в Баку и осуществляет деятельность в Имишли и других регионах страны. В период с 2009 по 2025 год активно участвовало в нескольких грантовых проектах, выделенных государством. В состав Общественного Объединения в настоящее время входят 5 членов правления."
+            data-en="The Public Union 'Center for Economic Development and Social Research' was registered by the Ministry of Justice of the Republic of Azerbaijan on March 19, 2009, with 15 members. Currently, the NGO has an office in Baku and operates in Imishli and other regions of the country. Between 2009 and 2025, it actively participated in several state-funded grant projects. Currently, the Public Union consists of 5 board members."
+          >
+            <strong
+              >İqtisadi İnkişaf və Sosial Tədqiqatlar Mərkəzi İctimai
+              Birliyi</strong
+            >
+            19 Mart 2009-cu il tarixində 15 nəfər üzvlərlə olmaqla Azərbaycan
+            Respublikası Ədliyyə Nazirliyi tərəfindən dövlət qeydiyyatına
+            alınmışdır. Hal hazırda QHT Bakı şəhərində ofisi olmaqla, İmişli və
+            ölkənin digər bölgələrində fəaliyyət göstərir. 2009-2025-ci illər
+            arasında dövlətin ayırdığı bir neçə qrant layihələrində fəal iştirak
+            etmişdir. İctimai Birliyin tərkibində hal hazırda 5 nəfər idarə heyəti
+            üzvü çalışır.
+          </p>
+          <h3
+            class="mb-3 mt-5"
+            data-ru="НАША МИССИЯ и ЦЕЛИ"
+            data-en="OUR MISSION and GOALS"
+          >
+            MİSSİYAMIZ
+          </h3>
+          <p class="card-text">
+            <strong
+              data-ru="Наша Миссия:"
+              data-en="Our Mission:"
+              style="color: #7030a0"
+              >Missiyamız:</strong
+            >
+            <span
+              data-ru="Проведение просветельской работы по социально-экономическому развитию страны, поддержка развития инфраструктуры в регионе и содействие формированию предпринимательской среды в регионах."
+              data-en="Conducting educational work related to the socio-economic development of the country, supporting infrastructure development in the region, and assisting in the formation of an entrepreneurial environment in the regions."
+              >Ölkənin sosial-iqtisadi inkişafı ilə bağlı maarifçilik işi aparmaq,
+              regionda infrastrukturun inkişafına dəstək və bölgələrdə sahibkarlık
+              mühitinin formalaşmasına yardım etməkdir.</span
+            >
+            <br /><br />
+            
+            <span
+              data-ru="Играть роль моста между обществом, государством и частным сектором, поддерживая решение социальных проблем."
+              data-en="To play the role of a bridge between society, the state, and the private sector by supporting the solution of social problems."
+              >Sosial problemlərin həllinə dəstək olmaqla cəmiyyətlə dövlət və
+              özəl sektor arasında körpü rolunu oynamaqdır.</span
+            >
           </p>
         </div>
-        <div class="ratio ratio-16x9 shadow-sm rounded overflow-hidden">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3038.7113425574323!2d49.867092!3d40.409264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d85a50a8bdb%3A0xb602f0666484d2cd!2sBaku%2C%20Azerbaijan!5e0!3m2!1sen!2s!4v1634567890123!5m2!1sen!2s"
-            style="border: 0"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          >
-          </iframe>
+      </div>
+
+      <div class="container my-5" id="gallery">
+        <h1
+          class="display-3 text-center mb-5"
+          data-ru="Галерея Деятельности"
+          data-en="Activity Gallery"
+        >
+          Fəaliyyət Qalereyası
+        </h1>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <div class="col">
+            <div class="card h-100">
+              <img
+                src="./img/gallery1.png"
+                class="gallery-img"
+                alt="Uşaq Futbol Komandası"
+              />
+              <div class="card-body text-center p-3">
+                <p class="card-text small mb-0 fw-medium">
+                  İmişli rayonunda 150 nəfərdən ibarət uşaq gənclər futbolunun
+                  yaradılmasına dəstək olmuşdur
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img
+                src="./img/gallery5.png"
+                class="gallery-img"
+                alt="KOB Təlimi"
+              />
+              <div class="card-body text-center p-3">
+                <p class="card-text small mb-0 fw-medium">
+                  KOB-la birlikdə Sahibkarla layihələrin yazılması istiqamətində
+                  təlim və maarifləndirmə proqramları həyata keçirilib.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img
+                src="./img/gallery2.png"
+                class="gallery-img"
+                alt="Şəhid Ailələriylə Görüş"
+              />
+              <div class="card-body text-center p-3">
+                <p class="card-text small mb-0 fw-medium">
+                  İmişli rayonunda şəhidlərin xatirəsinə həsr olunmuş məktəblər
+                  arası atıcılıq yarışının təşkilinə dəstək olmuşdur
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img
+                src="./img/gallery4.png"
+                class="gallery-img"
+                alt="İdarə Heyəti Görüşü"
+              />
+              <div class="card-body text-center p-3">
+                <p class="card-text small mb-0 fw-medium">
+                  27 Sentyabr 2024 tarixində anım günü ilə bağlı QHT Şəhidlərin
+                  xatirəsinə həsr olunmuş tədbir keçirmişdir.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img
+                src="./img/gallery6.png"
+                class="gallery-img"
+                alt="Təlim"
+              />
+              <div class="card-body text-center p-3">
+                <p class="card-text small mb-0 fw-medium">
+                  İmişli ASAN Xidmətlə birgə kibertəhlükəsizlik mövzusunda ASAN
+                  könüllülərinə təlim keçirmişdir.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img
+                src="./img/gallery3.png"
+                class="gallery-img"
+                alt="Narkomaniyaya yox"
+              />
+              <div class="card-body text-center p-3">
+                <p class="card-text small mb-0 fw-medium">
+                  İmişli rayonunda İmişli İcra Hakimiyəti ilə birg "narkomaniyaya
+                  yox" adlı tədbir keçirilmişdir.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container my-5" id="features">
+        <h1
+          class="display-3 text-center mb-5"
+          data-ru="Проделанные Работы и Мероприятия"
+          data-en="Completed Work and Events"
+        >
+          Görülən İşlər və Tədbirlər
+        </h1>
+
+        <div class="row row-cols-1 row-cols-md-2 g-4 mx-auto mb-5">
+          <div class="col">
+            <div class="card h-100 text-center">
+              <img
+                src="./img/img3.png"
+                class="card-img-top feature-card-img"
+                alt="Futbol layihəsi"
+              />
+              <div class="card-body d-flex flex-column align-items-center">
+                <h5>Uşaq Gənclər Futbolu Layihəsi</h5>
+                <p class="card-text flex-grow-1 text-center">
+                  İmişli rayonunda <strong>150 nəfərdən ibarət uşaq gənclər futbolunun yaradılmasına</strong> dəstək olmuşdur.
+                </p>
+                <button type="button" class="btn btn-warning mt-3" data-bs-toggle="modal" data-bs-target="#modal1">
+                  Ətraflı
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="card h-100 text-center">
+              <img
+                src="./img/img4.png"
+                class="card-img-top feature-card-img"
+                alt="Atıcılıq yarışması"
+              />
+              <div class="card-body d-flex flex-column align-items-center">
+                <h5>Atıcılıq Yarşının Təşkili</h5>
+                <p class="card-text flex-grow-1 text-center">
+                  İmişli rayonunda <strong>şəhidlərin xatirəsinə həsr olunmuş məktəblərarası atıcılıq yarışının</strong> təşkilinə dəstək olmuşdur.
+                </p>
+                <button type="button" class="btn btn-warning mt-3" data-bs-toggle="modal" data-bs-target="#modal2">
+                  Ətraflı
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="card h-100 text-center">
+              <img
+                src="./img/img5.png"
+                class="card-img-top feature-card-img"
+                alt="Narkomaniyaya yox"
+              />
+              <div class="card-body d-flex flex-column align-items-center">
+                <h5>"Narkomaniyaya Yox” Tədbiri</h5>
+                <p class="card-text flex-grow-1 text-center">
+                  İmişli rayon İcra Hakimiyyəti ilə birgə <strong>"Narkomaniyaya yox” adlı tədbir</strong> keçirilmişdir.
+                </p>
+                <button type="button" class="btn btn-warning mt-3" data-bs-toggle="modal" data-bs-target="#modal3">
+                  Ətraflı
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="card h-100 text-center">
+              <img
+                src="./img/img9.png"
+                class="card-img-top feature-card-img"
+                alt="KOB layihələri"
+              />
+              <div class="card-body d-flex flex-column align-items-center">
+                <h5>Sahibkarlıq Layihələri üzrə Təlimlər</h5>
+                <p class="card-text flex-grow-1 text-center">
+                  KOB-la birlikdə <strong>Sahibkarlara layihələrin yazılması</strong> istiqaməti̇ndə təlim və maarifləndirmə proqramları həyata keçirilmişdir.
+                </p>
+                <button type="button" class="btn btn-warning mt-3" data-bs-toggle="modal" data-bs-target="#modal4">
+                  Ətraflı
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-light py-5 section">
+        <div class="container my-4" id="prices">
+          <h1 class="display-3 text-center mb-5">Strateqiyamız</h1>
+          <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Qrant Layihələri və Əməkdaşlıq
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <strong>Azərbaycan Respublikası Qeyri Hökümət Təşkilatlarına Dəstək Agentliyi</strong> ilə qrant layihələri çərçivəsészet birgə əməkdaşlıq.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Bölgələrdə Sosial Yönümlü Fəaliyyətlər
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  Bölgələrdə və Qarabağda **yaşıllaşdırma**, saviyyəsinin artırılması, **sosial yönümlü layihələrdə** iştirak etmək. QHT-nin idarəetme sistemini təkmilləşdirmək, işçilik səviyyəsi və məşğulluq imkanlarının bölgələrdə tətbiqinə dəstək.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  Sahibkarlıq və Məşğulluğa Dəstək
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  **Kənd təsərrüfatı və kiçik sahibkarlığın inkişaf potensialına dəstək.** Gənclərin və qadınların əmək bazarına çıxış imkanlarına dəstək.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container my-5" id="partners">
+        <h1 class="display-3 text-center mb-5">Tərəfdaşlarımız</h1>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <div class="col">
+            <div class="card text-center h-100 p-4 align-items-center">
+              <img src="./img/img6.png" class="img-fluid mb-3" style="max-width: 150px" alt="İmişli İcra Hakimiyyəti" />
+              <div class="card-body p-0">
+                <h5>İmişli Rayon İcra Hakimiyyəti</h5>
+                <p class="text-muted">Region səviyyəsində birgə sosial və maarifləndirici layihələr.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card text-center h-100 p-4 align-items-center">
+              <img src="./img/img7.png" class="img-fluid mb-3" style="max-width: 150px" alt="QHT Agentliyi" />
+              <div class="card-body p-0">
+                <h5>QHT-lərə Dəstək Agentliyi</h5>
+                <p class="text-muted">Qeyri-Hökumət Təşkilatlarına Dövlət Dəstəyi Agentliyi ilə qrant əməkdaşlığı.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card text-center h-100 p-4 align-items-center">
+              <img src="./img/img8.png" class="img-fluid mb-3" style="max-width: 150px" alt="Milli QHT Forumu" />
+              <div class="card-body p-0">
+                <h5>Azərbaycan Milli QHT Forumu</h5>
+                <p class="text-muted">Forum ilə təcrübə mübadiləsi və institusional inkişaf sahəsində tərəfdaşlıq.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-light py-5 section">
+        <div class="container my-4" id="contact">
+          <h2 class="text-center mb-5">Ünvanımız və Əlaqə</h2>
+          <div class="p-4 rounded bg-white shadow-sm mb-5 border border-light" style="background-color: rgba(255, 255, 255, 0.85) !important;">
+            <h5 class="card-title text-center mb-4">İqtisadi İnkişaf və Sosial Tədqiqatlar Mərkəzi İctimai Birliyi</h5>
+            <p class="text-center mb-2 fs-5">Ünvan: <strong style="color: #7030a0">İmişli rayonu</strong></p>
+            <p class="text-center mb-0 fs-5">Telefon: <strong style="color: #7030a0">050 208 58 38</strong></p>
+          </div>
+          <div class="ratio ratio-16x9 shadow-sm rounded overflow-hidden">
+            <iframe src="http://maps.google.com/maps?q=Imishli,Azerbaijan&output=embed" style="border: 0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
         </div>
       </div>
     </div>
@@ -1008,338 +951,154 @@
     <footer class="text-center py-4">
       <div class="container">
         <div class="mb-3 d-flex justify-content-center gap-4">
-          <a href="https://wa.me/+994502085838">
-            <img src="./img/wp.png" alt="WhatsApp" width="35" />
-          </a>
-          <a href="https://www.instagram.com/">
-            <img src="./img/insta.png" alt="Instagram" width="35" />
-          </a>
-          <a href="https://www.facebook.com/">
-            <img src="./img/face.png" alt="Facebook" width="35" />
-          </a>
-          <a href="tel:+994502085838">
-            <img src="./img/phone-call.png" alt="Phone" width="35" />
-          </a>
+          <a href="https://wa.me/+994502085838"><img src="./img/wp.png" alt="WhatsApp" width="35" /></a>
+          <a href="https://www.instagram.com/"><img src="./img/insta.png" alt="Instagram" width="35" /></a>
+          <a href="https://www.facebook.com/"><img src="./img/face.png" alt="Facebook" width="35" /></a>
+          <a href="tel:+994502085838"><img src="./img/phone-call.png" alt="Phone" width="35" /></a>
         </div>
-        <p
-          class="mb-0"
-          data-ru="© 2025 Центр Экономического Развития и Социальных Исследований"
-          data-en="© 2025 Center for Economic Development and Social Research"
-        >
-          © 2025 İqtisadi İnkişaf və Sosial Tədqiqatlar Mərkəzi
-        </p>
+        <p class="mb-0">© 2025 İqtisadi İnkişaf və Sosial Tədqiqatlar Mərkəzi</p>
       </div>
     </footer>
 
     <div class="floating-socials">
-      <a href="https://wa.me/+994502085838" class="floating-btn" target="_blank" title="WhatsApp">
-        <img src="./img/wp.png" alt="WhatsApp" />
-      </a>
-      <a href="https://www.instagram.com/" class="floating-btn" target="_blank" title="Instagram">
-        <img src="./img/insta.png" alt="Instagram" />
-      </a>
-      <a href="https://www.facebook.com/" class="floating-btn" target="_blank" title="Facebook">
-        <img src="./img/face.png" alt="Facebook" />
-      </a>
+      <a href="https://wa.me/+994502085838" target="_blank" class="floating-btn" title="WhatsApp"><img src="./img/wp.png" alt="WhatsApp" /></a>
+      <a href="https://www.instagram.com/" target="_blank" class="floating-btn" title="Instagram"><img src="./img/insta.png" alt="Instagram" /></a>
+      <a href="https://www.facebook.com/" target="_blank" class="floating-btn" title="Facebook"><img src="./img/face.png" alt="Facebook" /></a>
     </div>
 
-    <div
-      class="modal fade"
-      id="modal1"
-      tabindex="-1"
-      aria-labelledby="modal1Label"
-      aria-hidden="true"
-    >
+    <div class="modal fade" id="modal1" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header border-bottom">
-            <h5 class="modal-title text-success" id="modal1Label">
-              <span data-ru="Проект Детско-Юношеского Футбола" data-en="Youth Football Project"
-                >Uşaq Gənclər Futbolu Layihəsi</span
-              >
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Bağla"
-              data-ru-label="Закрыть"
-              data-en-label="Close"
-            ></button>
+            <h5 class="modal-title text-success">Uşaq Gənclər Futbolu Layihəsi</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <p
-              data-ru="В целях повышения интереса молодого поколения к спорту и пропаганды здорового образа жизни в Имишлинском районе оказана поддержка в **создании детско-юношеской футбольной команды, состоящей из 150 человек**. Эта инициатива способствует физическому развитию и социализации молодежи."
-              data-en="In order to increase the interest of the younger generation in sports and promote a healthy lifestyle in the Imishli region, support was provided for the **creation of a youth football team consisting of 150 members**. This initiative serves the physical development and socialization of youth."
-            >
-              İmişli rayonunda gənc nəslin idmana marağını artırmaq və sağlam
-              həyat tərzi̇ni̇ təşvi̇q etmək məqsədi̇lə **150 nəfərdən i̇barət
-              uşaq-gənclər futbol komandasıni̇n yaradılmasına** dəstək
-              göstəri̇lmi̇şdi̇r. Bu təşəbbüs gəncləri̇n fi̇zi̇ki̇ i̇nki̇şafına və
-              sosiallaşmasına xi̇dmət edi̇r.
-            </p>
+            <p>İmişli rayonunda gənc nəslin idmana marağını artırmaq və sağlam həyat tərzi̇ni̇ təşvi̇q etmək məqsədi̇lə <strong>150 nəfərdən i̇barət uşaq-gənclər futbol komandasıni̇n yaradılmasına</strong> dəstək göstəri̇lmi̇şdi̇r.</p>
           </div>
           <div class="modal-footer border-top">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-              data-ru="Закрыть"
-              data-en="Close"
-            >
-              Bağla
-            </button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bağla</button>
           </div>
         </div>
       </div>
     </div>
 
-    <div
-      class="modal fade"
-      id="modal2"
-      tabindex="-1"
-      aria-labelledby="modal2Label"
-      aria-hidden="true"
-    >
+    <div class="modal fade" id="modal2" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header border-bottom">
-            <h5 class="modal-title text-success" id="modal2Label">
-              <span
-                data-ru="Соревнования по Стрельбе, Посвященные Памяти Шехидов"
-                data-en="Shooting Competition Dedicated to the Memory of Martyrs"
-                >Şəhidlərin Xatirəsinə Həsr Olunmuş Atıcılıq Yarışı</span
-              >
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Bağla"
-              data-ru-label="Закрыть"
-              data-en-label="Close"
-            ></button>
+            <h5 class="modal-title text-success">Şəhidlərin Xatirəsinə Həsr Olunmuş Atıcılıq Yarışı</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <p
-              data-ru="Поддерживая организацию межшкольных соревнований по стрельбе, наше Объединение способствует **повышению патриотического духа** молодежи и постоянному увековечиванию памяти наших шехидов. Это мероприятие является частью работ, проводимых в связи с Днем Памяти 27 Сентября."
-              data-en="By supporting the organization of an inter-school shooting competition, our Union serves to **elevate the patriotic spirit** of the youth and eternally immortalize the memory of our martyrs. This event is part of the work carried out in connection with the September 27 Memorial Day."
-            >
-              Məktəblərarası atıcılıq yarışının təşkilinə dəstək olmaqla,
-              Birliyimiz
-               **gəncləri̇n vətənpərvərli̇k ruhunun yüksəldi̇lməsi̇nə** və şəhi̇dləri̇mi̇zi̇n xati̇rəsi̇ni̇n daimi̇
-               əbədi̇ləşdi̇ri̇lməsi̇nə xi̇dmət edi̇r. Bu tədbi̇r 27 Sentyabr Anım Günü i̇lə bağlı görülən i̇şləri̇n bi̇r hi̇ssəsi̇di̇r.
-            </p>
+            <p>Məktəblərarası atıcılıq yarışının təşkilinə dəstək olmaqla, Birliyimiz <strong>gəncləri̇n vətənpərvərli̇k ruhunun yüksəldi̇lməsi̇nə</strong> və şəhi̇dləri̇mi̇zi̇n xati̇rəsi̇ni̇n daimi̇ əbədi̇ləşdi̇ri̇lməsi̇nə xi̇dmət edi̇r.</p>
           </div>
           <div class="modal-footer border-top">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-              data-ru="Закрыть"
-              data-en="Close"
-            >
-              Bağla
-            </button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bağla</button>
           </div>
         </div>
       </div>
     </div>
 
-    <div
-      class="modal fade"
-      id="modal3"
-      tabindex="-1"
-      aria-labelledby="modal3Label"
-      aria-hidden="true"
-    >
+    <div class="modal fade" id="modal3" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header border-bottom">
-            <h5 class="modal-title text-success" id="modal3Label">
-              <span data-ru="Мероприятие 'Нет Наркомании'" data-en="'No to Drug Addiction' Event"
-                >"Narkomaniyaya Yox” Tədbiri</span
-              >
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Bağla"
-              data-ru-label="Закрыть"
-              data-en-label="Close"
-            ></button>
+            <h5 class="modal-title text-success">"Narkomaniyaya Yox” Tədbiri</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <p
-              data-ru="Совместно с Исполнительной Властью Имишлинского района организовано **просветительское мероприятие под названием 'Нет Наркомании'**. Цель – повышение осведомленности молодежи об опасности наркотиков и пропаганда здорового образа жизни."
-              data-en="An **educational event titled 'No to Drug Addiction'** was held jointly with the Executive Power of the Imishli region. The goal is to raise awareness among young people about the dangers of drugs and to promote a healthy lifestyle."
-            >
-              İmişli rayon İcra Hakimiyyəti ilə birgə **"Narkomaniyaya yox” adlı
-              maarifləndiri̇ci̇ tədbi̇r** keçiri̇lmi̇şdi̇r. Məqsəd gəncləri̇ narkoti̇kləri̇n
-              təhlükələri̇ barədə məlumatlandırmaq və sağlam həyat tərzi̇ni̇ təbli̇ğ etməkdi̇r.
-            </p>
+            <p>İmişli rayon İcra Hakimiyyəti ilə birgə <strong>"Narkomaniyaya yox” adlı maarifləndiri̇ci̇ tədbi̇r</strong> keçiri̇lmi̇şdi̇r.</p>
           </div>
           <div class="modal-footer border-top">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-              data-ru="Закрыть"
-              data-en="Close"
-            >
-              Bağla
-            </button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bağla</button>
           </div>
         </div>
       </div>
     </div>
 
-    <div
-      class="modal fade"
-      id="modal4"
-      tabindex="-1"
-      aria-labelledby="modal4Label"
-      aria-hidden="true"
-    >
+    <div class="modal fade" id="modal4" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header border-bottom">
-            <h5 class="modal-title text-success" id="modal4Label">
-              <span data-ru="Тренинги по Предпринимательским Проектам" data-en="Trainings on Entrepreneurship Projects"
-                >Sahibkarlıq Layihələri üzrə Təlimlər</span
-              >
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Bağla"
-              data-ru-label="Закрыть"
-              data-en-label="Close"
-            ></button>
+            <h5 class="modal-title text-success">Sahibkarlıq Layihələri üzrə Təlimlər</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <p
-              data-ru="Совместно с KOB (Агентство по Развитию Малого и Среднего Бизнеса) проведены тренинги и просветительские программы по **написанию проектов для предпринимателей**. Эти тренинги направлены на поддержку развития малого и среднего бизнеса в регионе."
-              data-en="Training and educational programs on **project writing for entrepreneurs** were conducted together with SME (KOB). These trainings are aimed at supporting the development of small and medium-sized businesses in the region."
-            >
-              KOB-la birlikdə **Sahibkarlara layihələri̇n yazılması**
-              i̇sti̇qaməti̇ndə təli̇m və maari̇fləndi̇rmə proqramları həyata
-              keçiri̇lmi̇şdi̇r. Bu təli̇mlər regi̇onda ki̇çi̇k və orta sani̇bkarlığın
-              i̇nki̇şafına dəstək məqsədi̇ daşıyır.
-            </p>
+            <p>KOB-la birlikdə <strong>Sahibkarlara layihələri̇n yazılması</strong> i̇stiqaməti̇ndə təli̇m və maari̇fləndi̇rmə proqramları həyata keçiri̇lmi̇şdi̇r.</p>
           </div>
           <div class="modal-footer border-top">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-              data-ru="Закрыть"
-              data-en="Close"
-            >
-              Bağla
-            </button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bağla</button>
           </div>
         </div>
       </div>
     </div>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        
-        function setLanguage(langCode, saveToStorage = true) {
-            
-            const azButton = document.getElementById('lang-az');
-            const ruButton = document.getElementById('lang-ru');
-            const enButton = document.getElementById('lang-en');
+      function setLanguage(langCode, saveToStorage = true) {
+        const azButton = document.getElementById("lang-az");
+        const ruButton = document.getElementById("lang-ru");
+        const enButton = document.getElementById("lang-en");
 
-            if (!azButton || !ruButton || !enButton) return; 
+        if (!azButton || !ruButton || !enButton) return;
 
-            azButton.classList.remove('active-lang');
-            ruButton.classList.remove('active-lang');
-            enButton.classList.remove('active-lang');
-            
-            if (langCode === 'az') {
-                azButton.classList.add('active-lang');
-            } else if (langCode === 'ru') {
-                ruButton.classList.add('active-lang');
-            } else if (langCode === 'en') {
-                enButton.classList.add('active-lang');
-            }
+        azButton.classList.remove("active-lang");
+        ruButton.classList.remove("active-lang");
+        enButton.classList.remove("active-lang");
 
-            
-            const elementsToTranslate = document.querySelectorAll('[data-ru]');
-            const elementsToTranslateAlt = document.querySelectorAll('[data-ru-alt]');
-            const titleElement = document.querySelector('title');
-            
-            elementsToTranslate.forEach(element => {
-                if (!element.hasAttribute('data-az')) {
-                    element.setAttribute('data-az', element.innerHTML.trim());
-                }
-                
-                const azText = element.getAttribute('data-az');
-                const ruText = element.getAttribute('data-ru');
-                const enText = element.getAttribute('data-en');
+        if (langCode === "az") { azButton.classList.add("active-lang"); }
+        else if (langCode === "ru") { ruButton.classList.add("active-lang"); }
+        else if (langCode === "en") { enButton.classList.add("active-lang"); }
 
-                if (langCode === 'ru' && ruText) {
-                    element.innerHTML = ruText;
-                } else if (langCode === 'en' && enText) {
-                    element.innerHTML = enText;
-                } else if (langCode === 'az' && azText) {
-                    element.innerHTML = azText;
-                }
-            });
-            
-            elementsToTranslateAlt.forEach(element => {
-                if (!element.hasAttribute('data-az-alt')) {
-                    element.setAttribute('data-az-alt', element.getAttribute('alt'));
-                }
+        const elementsToTranslate = document.querySelectorAll("[data-ru]");
+        const elementsToTranslateAlt = document.querySelectorAll("[data-ru-alt]");
+        const titleElement = document.querySelector("title");
 
-                const azAlt = element.getAttribute('data-az-alt');
-                const ruAlt = element.getAttribute('data-ru-alt');
-                const enAlt = element.getAttribute('data-en-alt');
+        elementsToTranslate.forEach((element) => {
+          if (!element.hasAttribute("data-az")) {
+            element.setAttribute("data-az", element.innerHTML.trim());
+          }
+          const azText = element.getAttribute("data-az");
+          const ruText = element.getAttribute("data-ru");
+          const enText = element.getAttribute("data-en");
 
-                if (langCode === 'ru' && ruAlt) {
-                    element.setAttribute('alt', ruAlt);
-                } else if (langCode === 'en' && enAlt) {
-                    element.setAttribute('alt', enAlt);
-                } else if (langCode === 'az' && azAlt) {
-                    element.setAttribute('alt', azAlt);
-                }
-            });
-
-            if (titleElement) {
-  
-                const azTitle = titleElement.getAttribute('data-az');
-                const ruTitle = titleElement.getAttribute('data-ru');
-                const enTitle = titleElement.getAttribute('data-en');
-                
-                if (langCode === 'ru' && ruTitle) {
-                    titleElement.textContent = ruTitle;
-                } else if (langCode === 'en' && enTitle) {
-                    titleElement.textContent = enTitle;
-                } else if (langCode === 'az' && azTitle) {
-                    titleElement.textContent = azTitle;
-                }
-            }
-            
-
-            document.documentElement.lang = langCode;
-
-            if (saveToStorage) {
-                localStorage.setItem('currentLang', langCode);
-            }
-        }
-        
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('currentLang') || 'az';
-            setLanguage(savedLang, false); 
+          if (langCode === "ru" && ruText) { element.innerHTML = ruText; }
+          else if (langCode === "en" && enText) { element.innerHTML = enText; }
+          else if (langCode === "az" && azText) { element.innerHTML = azText; }
         });
-        
+
+        elementsToTranslateAlt.forEach((element) => {
+          if (!element.hasAttribute("data-az-alt")) {
+            element.setAttribute("data-az-alt", element.getAttribute("alt"));
+          }
+          const azAlt = element.getAttribute("data-az-alt");
+          const ruAlt = element.getAttribute("data-ru-alt");
+          const enAlt = element.getAttribute("data-en-alt");
+
+          if (langCode === "ru" && ruAlt) { element.setAttribute("alt", ruAlt); }
+          else if (langCode === "en" && enAlt) { element.setAttribute("alt", enAlt); }
+          else if (langCode === "az" && azAlt) { element.setAttribute("alt", azAlt); }
+        });
+
+        if (titleElement) {
+          const azTitle = titleElement.getAttribute("data-az");
+          const ruTitle = titleElement.getAttribute("data-ru");
+          const enTitle = titleElement.getAttribute("data-en");
+          if (langCode === "ru" && ruTitle) { titleElement.textContent = ruTitle; }
+          else if (langCode === "en" && enTitle) { titleElement.textContent = enTitle; }
+          else if (langCode === "az" && azTitle) { titleElement.textContent = azTitle; }
+        }
+
+        document.documentElement.lang = langCode;
+        if (saveToStorage) { localStorage.setItem("currentLang", langCode); }
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const savedLang = localStorage.getItem("currentLang") || "az";
+        setLanguage(savedLang, false);
+      });
     </script>
   </body>
 </html>
